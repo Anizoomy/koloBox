@@ -7,7 +7,7 @@ const { authentication } = require('../middleware/auth');
 
 /**
  * @swagger
- * /api/users/register:
+ * /api/v1/users/register:
  *   post:
  *     summary: Register a new user
  *     tags: [User]
@@ -86,7 +86,7 @@ router.post('/register', registerValidator, register);
 
 /**
  * @swagger
- * /api/users/verify-email:
+ * /api/v1/users/verify-email:
  *   post:
  *     summary: Verify user's email with OTP
  *     tags: [User]
@@ -138,7 +138,7 @@ router.post('/verify-email', verifyEmail);
 
 /**
  * @swagger
- * /api/users/resend-otp:
+ * /api/v1/users/resend-otp:
  *   post:
  *     summary: Resend a new OTP to the user's registered email
  *     tags: [User]
@@ -209,7 +209,7 @@ router.post('/resend-otp', resendOtp);
 
 /**
  * @swagger
- * /api/users/login:
+ * /api/v1/users/login:
  *   post:
  *     summary: User login
  *     tags: [User]
@@ -276,7 +276,7 @@ router.post('/login', loginValidator, login);
 
 /**
  * @swagger
- * /api/users/forgot-password:
+ * /api/v1/users/forgot-password:
  *   post:
  *     summary: Request a password reset OTP
  *     tags: [User]
@@ -335,7 +335,7 @@ router.post('/forgot-password', forgotPassword);
 
 /**
  * @swagger
- * /api/users/reset-password:
+ * /api/v1/users/reset-password:
  *   post:
  *     summary: Reset user password using OTP
  *     tags: [User]
@@ -413,7 +413,7 @@ router.post('/reset-password', resetPassword);
 
 /**
  * @swagger
- * /api/users/delete-account/{id}:
+ * /api/v1/users/delete-account/{id}:
  *   delete:
  *     summary: Delete a user account by ID
  *     description: Permanently deletes a user account from the system using the provided user ID.
@@ -467,7 +467,7 @@ router.delete('/delete-account/:id', deleteUser);
 
 /**
  * @swagger
- * /api/users/all-users:
+ * /api/v1/users/all-users:
  *   get:
  *     summary: Retrieve a list of all users
  *     tags:
