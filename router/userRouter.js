@@ -5,33 +5,6 @@ const { registerValidator, loginValidator } = require('../middleware/validator')
 const { authentication } = require('../middleware/auth');
 
 
-router.post('/register', registerValidator, register);
-
-router.post('/verify-email', verifyEmail);
-
-router.post('/resend-otp', resendOtp);
-
-router.post('/login', loginValidator, login);
-
-router.post('/forgot-password', forgotPassword);
-
-router.post('/reset-password', resetPassword);
-
-router.delete('/delete-account/:id', deleteUser);
-
-router.get('/all-users', getAllUsers);
-
-module.exports = router;
-
-
-/**
- * @swagger
- * tags:
- *   name: User
- *   description: User management and authentication
- */
-
-
 /**
  * @swagger
  * /api/users/register:
@@ -108,6 +81,7 @@ module.exports = router;
  *       500:
  *         description: Server error
  */
+router.post('/register', registerValidator, register);
 
 
 /**
@@ -158,6 +132,8 @@ module.exports = router;
  *       500:
  *         description: Server error
  */
+router.post('/verify-email', verifyEmail);
+
 
 
 /**
@@ -227,6 +203,8 @@ module.exports = router;
  *                   type: string
  *                   example: Something went wrong
  */
+router.post('/resend-otp', resendOtp);
+
 
 
 /**
@@ -292,6 +270,8 @@ module.exports = router;
  *       500:
  *         description: Server error
  */
+router.post('/login', loginValidator, login);
+
 
 
 /**
@@ -349,6 +329,7 @@ module.exports = router;
  *                   type: string
  *                   example: Something went wrong on the server
  */
+router.post('/forgot-password', forgotPassword);
 
 
 
@@ -426,6 +407,61 @@ module.exports = router;
  *                   type: string
  *                   example: Something went wrong on the server
  */
+router.post('/reset-password', resetPassword);
+
+
+
+/**
+ * @swagger
+ * /api/users/delete-account/{id}:
+ *   delete:
+ *     summary: Delete a user account by ID
+ *     description: Permanently deletes a user account from the system using the provided user ID.
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the user to delete
+ *     responses:
+ *       200:
+ *         description: User deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: User deleted successfully
+ *       404:
+ *         description: User not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: User not found
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Server error
+ *                 error:
+ *                   type: string
+ *                   example: Detailed error message
+ */
+router.delete('/delete-account/:id', deleteUser);
 
 
 
@@ -481,55 +517,39 @@ module.exports = router;
  *                   type: string
  *                   example: Error message details
  */
+router.get('/all-users', getAllUsers);
+
+module.exports = router;
 
 
 /**
  * @swagger
- * /api/users/delete-account/{id}:
- *   delete:
- *     summary: Delete a user account by ID
- *     description: Permanently deletes a user account from the system using the provided user ID.
- *     tags:
- *       - Users
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: The ID of the user to delete
- *     responses:
- *       200:
- *         description: User deleted successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: User deleted successfully
- *       404:
- *         description: User not found
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: User not found
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Server error
- *                 error:
- *                   type: string
- *                   example: Detailed error message
+ * tags:
+ *   name: User
+ *   description: User management and authentication
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
